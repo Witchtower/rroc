@@ -3,8 +3,8 @@
     <title>RROC - Rick Roll Operation Center</title>
 </head>
 <body>
+    <img src="{{ url_for('static', filename='logo.png') }}"/>
 
-    <h1>RROC - Rick Roll Operation Center</h1>
 
     <p>You can search for extensions and names.</p>
     <form action="{{ url_for('search') }}" method="POST">
