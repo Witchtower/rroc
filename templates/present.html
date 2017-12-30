@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>RROC - Rick Roll Operation Center</title>
+</head>
+<body>
+
+    <h1>RROC - Rick Roll Operation Center</h1>
+
+    <p>You can search for extensions and names.</p>
+    <form action="{{ url_for('search') }}" method="POST">
+        <label>Search for a number:</label>
+        <input type="text" name="query" id="query">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if numbers|length > 0 %}
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>x</th>
+        </tr>
+    </thead>
+        {% for n in numbers %}
+        <tr>
+            <td>{{ n.extension }}</td>
+            <td>{{ n.name }}</td>
+            <td>
+                <a href="{{ url_for('call', number=n.extension)}}">Queue Call</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+</body>
+</html>
